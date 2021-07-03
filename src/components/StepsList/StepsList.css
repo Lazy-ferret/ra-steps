@@ -1,0 +1,30 @@
+.StepsList {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.StepsList-TableHead {
+  margin-bottom: 20px;
+}
+
+.StepsList-HeadersCell, .StepsListItem-Cell {
+  padding-left: 10px;
+}
+
+.StepsList-TableHead {
+  width: 400px;
+}
+
+.StepsList-TableBody {
+  border-radius: 10px;
+  border: 1px solid black;
+  width: 400px;
+  min-height: 40px;
+}
+
+td {
+  width: 130px;
+}
