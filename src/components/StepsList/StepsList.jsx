@@ -14,7 +14,7 @@ export default function StepsList(props) {
     <table className='StepsList' >
       <thead className='StepsList-TableHead'>
         <tr className='StepsList-HeadersContainer'>
-          <td className='StepsList-HeadersCell'>Дата (ДД.ММ.ГГ)</td>
+          <td className='StepsList-HeadersCell'>Дата (ДД.ММ.ГГГГ)</td>
           <td className='StepsList-HeadersCell'>Пройдено км</td>
           <td className='StepsList-HeadersCell'>Действия</td>
         </tr>

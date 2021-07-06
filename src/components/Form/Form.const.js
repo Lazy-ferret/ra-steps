@@ -1,1 +1,1 @@
-export const INITIAL_FORM = { date: '', distance: '' };
+export const INITIAL_FORM = { date: '', distance: '', error: '' };

@@ -10,16 +10,44 @@ export default function Form({ onAdd }) {
         setForm((form) => ({ ...form, [e.target.name]: e.target.value }))
     }
 
+    const checkValidity = (date, distance) => {
+        const errorList = [];
+
+        if ((/^[0-3][0-9]\.[0-1][0-9]\.[0-9]{4}$/).test(date)) {
+            const [d, m, y] = date.split('.');
+            if (d < 1 || m < 1 || y < 1 || d > 31 || m > 12) {
+                errorList.push({ message: 'Неверный формат даты' });
+            }
+        } else {
+            errorList.push({ message: 'Неверный формат даты' });
+        }
+        if (Number.isNaN(Number.parseFloat(distance))) {
+            errorList.push({ message: 'Неверное расстояние' });
+        }
+        return errorList;
+    }
+
     const onSubmit = (e) => {
         e.preventDefault();
-        onAdd({ date: new Date(form.date), distance: Number(form.distance) });
+        const errorList = checkValidity(form.date, form.distance)
+
+        if (errorList.length > 0) {
+            errorList.forEach(e => alert(e.message))
+        } else {
+            const [d, m, y] = form.date.split('.');
+            const currentDate = new Date(y, m - 1, d);
+            onAdd({
+                date: currentDate,
+                distance: Number(form.distance)
+            });
+        }
         setForm(INITIAL_FORM);
     }
 
     return (
         <form className='Form' onSubmit={onSubmit}>
             <div className='Form-DateContainer'>
-                <label htmlFor="date">Дата (ДД.ММ.ГГ) </label>
+                <label htmlFor="date">Дата (ДД.ММ.ГГГГ) </label>
                 <input
                     className='Form-DateInput'
                     onChange={onFieldChange}
